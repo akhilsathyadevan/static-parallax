@@ -1,0 +1,77 @@
+.card-gallery {
+    text-align: center;
+    padding: 40px 20px;
+    align-items: center;
+    background-color: #150606; /* Light background for contrast */
+  }
+  .gallery-heading {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+  }
+  .gallery-heading::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #C44D58;
+    margin: 10px auto;
+    border-radius: 5px;
+  }
+/* .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #C44D58;
+    padding: 20px;
+  } */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Scoped img styles only apply to .card-container images */
+  .card-container img {
+    --f: .1; /* parallax factor */
+    --r: 10px; /* radius */
+    
+    --_f: calc(100% * var(--f) / (1 + var(--f)));
+    --_a: calc(90deg * var(--f));
+    
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: calc(1 + var(--f));
+    object-fit: cover;
+    clip-path: inset(0 var(--_f) 0 0 round var(--r));
+    transform: perspective(400px) var(--_t,rotateY(var(--_a)));
+    transition: .5s;
+    cursor: pointer;
+  }
+  
+  .card-container img:hover {
+    clip-path: inset(0 0 0 var(--_f) round var(--r));
+    --_t: translateX(calc(-1 * var(--_f))) rotateY(calc(-1 * var(--_a)));
+  }
+  
+  /* Responsive behavior */
+  @media (max-width: 768px) {
+    .card-container img {
+      max-width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card-container img {
+      max-width: 100px;
+    }
+  }
+  
